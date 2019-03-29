@@ -1,7 +1,7 @@
 
 <template>
   <div class="kinds">
-    <div class="form-content" >
+    <div class="form-content">
       <div class="form-title">
         <div class="form-titlespan">
           <span>标题1</span>
@@ -13,34 +13,32 @@
           <el-button type="primary" size="small" @click="addEle">新建</el-button>
         </div>
       </div>
-      <div class="form-main"> 
+      <div class="form-main">
         <div class="form-inputwrap">
           <div class="form-inputcont" v-for="items in 4" :key="items">
-            <el-input  placeholder="请输入内容"></el-input>
+            <el-input placeholder="请输入内容"></el-input>
           </div>
           <div class="form-delt">
             <el-button type="danger" size="small" plain>删除</el-button>
           </div>
         </div>
-    
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import TableForm from  './TableForm'
+import TableForm from "./TableForm";
 export default {
-  components:{
-     TableForm
+  components: {
+    TableForm
   },
   data() {
     return {
       input: null,
-      ele:'',
-      itemArr:[0],
-            tableData: [
+      ele: "",
+      itemArr: [0],
+      tableData: [
         {
           date: "2016-05-02",
           name: "王小虎",
@@ -53,29 +51,29 @@ export default {
           date: "2016-05-04",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1517 弄",
-          contact: "110",
+          contact: "110"
         },
         {
           date: "2016-05-01",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1519 弄",
-          contact: "110",
+          contact: "110"
         },
         {
           date: "2016-05-03",
           name: "王小虎",
           address: "上海市普陀区金沙江路 1516 弄",
-          contact: "110",
+          contact: "110"
         }
-      ],
+      ]
     };
   },
   methods: {
-    addEle(){
-        this.ele++;
-        this.itemArr.push(this.ele);
+    addEle() {
+      this.ele++;
+      this.itemArr.push(this.ele);
     }
-  },
+  }
 };
 </script>
 
@@ -85,9 +83,8 @@ export default {
   justify-content: center;
   align-items: center;
   margin: 20px;
-  
 }
-ul li{
+ul li {
   display: inline-block;
   list-style: none;
   padding: 20px;
@@ -118,7 +115,7 @@ ul li{
 .form-inputwrap {
   margin-bottom: 5px;
 }
-.router-link-active{
-	color:gold;
+.router-link-active {
+  color: gold;
 }
 </style>

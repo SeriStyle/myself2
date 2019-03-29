@@ -20,20 +20,28 @@
     var anotherTiger = Object.create(tiger);
     </code>
   </pre>
-  <Line-Point v-bind:linevalue='linevalue'></Line-Point>
 
-  <Proxy-Event></Proxy-Event>
+   <p>父组件与子组件通信：v-bind：变量名='需要传的东西到子组件'，子组件写props接受这个变量名</p>
+   <p>propo验证</p>
+  <Line-Point v-bind:linevalue='linevalue' ></Line-Point>
+    <!-- 事件代理 -->
+  <Proxy-Event :propF='a' :proxyval='a'></Proxy-Event>
+  <Vue-Temp></Vue-Temp>
+
+  
   </div>
 </template>
 <script>
 import LinePoint from "@/components/summary/LinePoint"
 import ProxyEvent from "@/components/summary/ProxyEvent"
+import VueTemp from "@/components/summary/VueTemp"
 
 console.log("101"-2);
 export default {
   components:{
     LinePoint,
     ProxyEvent,
+    VueTemp
   },
   data() {
     return {
@@ -41,7 +49,8 @@ export default {
         {date:'2019-01-24',content:"如何打造个人ip",url:'/tableForm'},
         {date:'2019-01-24',content:"如何打造个人ip",url:'/'},
         {date:'2019-01-24',content:"如何打造个人ip",url:'/tableForm'},
-      ]
+      ],
+      a:"success00",
     };
   },
   created() {
@@ -100,7 +109,7 @@ export default {
      };
     new TangGuo({name:'hy',address:'北京'})
 
-    console.log(TangGuo.__proto__);
+ 
     class Rectangle {
       constructor(height, width) {
         this.height = height;

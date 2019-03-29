@@ -1,6 +1,6 @@
 <template>
   <div>
-     <!-- <Ele-Table> </Ele-Table> -->
+     <Ele-Table> </Ele-Table>
    
   <h3>js动态生成table</h3>
     <div id="form1"></div>

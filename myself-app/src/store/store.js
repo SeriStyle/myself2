@@ -32,13 +32,16 @@ const moduleA={
   },
   getters:{
      getName(state){
+         if(getToken()){
+          state.token=getToken(); //由于页面刷新数据消失，这里使用了cookies，如果存在，就取里面的数据赋值
+         }
         return state.token
      }
   },
   mutations:{
     SET_TOKEN:(state,token)=>{
       console.log(token);
-      state.token = token
+      state.token = token;
     }
   },
   actions:{
@@ -46,8 +49,7 @@ const moduleA={
      LoginByUsername({ commit }, userInfo) {
       const username = userInfo.username.trim()
           commit('SET_TOKEN', username)
-          setToken( username)
-        
+          setToken( username) //设置cookies
     },
   }
 }

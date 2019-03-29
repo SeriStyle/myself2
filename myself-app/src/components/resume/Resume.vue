@@ -22,6 +22,8 @@
   </div>
 </template>
 <script>
+import Bus from "@/bus/bus";
+import { getToken} from '@/utils/auth'
 export default {
   name: "Resume",
   data() {
@@ -39,18 +41,34 @@ export default {
         background: true,
         loading: true
       },
-      styleObject: {}
+      styleObject: {},
+      username: "Hi ! Guys"
     };
   },
   props: {},
   directives: {},
   created() {
+    
     this.componentWillMount();
-   // console.log(this.$route.params.name);
-    console.log(this.$route.query.name);
+    this.username=this.$route.query.name;
+    // console.log(this.$route.params.name);
+   // console.log(this.$route.query.name);
+    Bus.$on("changed", (val) => {
+      this.username=val.username;
+      console.log(this.username);
+    
+     });
+    //  console.log(this);
+    //    this.$set(this,'username',this.username)
+
   },
-  mounted() {},
+  mounted() {
+  
+  },
   methods: {
+    busHandle() {
+   
+    },
     handleLoad() {
       this.loading = false;
       this.classObject.loading = false;
@@ -66,10 +84,10 @@ export default {
         document.documentElement.clientHeight ||
         document.body.clientHeight;
       this.img = new window.Image();
-     // this.img.src = `https://source.unsplash.com/random/${width}x${height}`;
+      // this.img.src = `https://source.unsplash.com/random/${width}x${height}`;
       this.img.src = `https://cn.bing.com/th?id=OHR.SakuraFes_ZH-CN1341601988_1920x1080.jpg&rf=NorthMale_1920x1080.jpg&pid=hp/${width}x${height}`;
 
-      console.log(this.img.src);
+     // console.log(this.img.src);
       this.styleObject = {
         "background-image": `url(${this.img.src})`
       };
@@ -78,12 +96,23 @@ export default {
   },
   computed: {
     getUserName() {
+       
+      // return this.$route.query.name;
+        
       return this.$store.getters.getName;
     },
-    getName(){
-      return '123324532'
+    getName() {
+      return "123324532";
+    }
+  },
+  watch:{
+    username(a,b){
+       console.log(a);
+        console.log(b)
+  
     }
   }
+
 };
 </script>
 <style lang="scss" scoped>

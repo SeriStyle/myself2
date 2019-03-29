@@ -8,10 +8,7 @@
   </div>
 </template>
 <script>
-
-
-  
-    
+import Bus from "@/bus/bus"
 export default {
   data() {
     return {
@@ -22,13 +19,22 @@ export default {
     }
   },
   created(){
- 
+
   },
   methods:{
    login(){
-      this.$store.dispatch('LoginByUsername',this.user);
+     this.$store.dispatch('LoginByUsername',this.user);  //vuex 兄弟组件通信修改值
+      //  Bus.$emit('changed',this.user)
       //this.$router.go("/aboutlist/showArtical");
-       this.$router.push("/");
+      this.$router.push("/");
+
+    //  this.$router.push({
+    //    name:'resume',
+    //    query:{
+    //      name:this.user.username
+    //    },
+    //  })
+        
    }
   },
    watch: {

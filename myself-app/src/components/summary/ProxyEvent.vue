@@ -11,13 +11,14 @@
         <span>3333333333</span>
       </li>
       <li class="a44" @click="a44">4444444</li>
+      
     </ul>
-    <div class="code">
+    <!-- <div class="code">
         code
       <p class="yh">
        ddd
       </p>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
@@ -27,11 +28,28 @@ export default {
   },
   //   自定义验证函数
   props: {
-    validator(value) {
-      return ["success", "waring", "danger"].indexOf() !== -1;
+    propF: {
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        if(['success', 'warning', 'danger'].indexOf(value) == -1 ){
+            // alert("内容有误");
+        }else{
+            // alert(value);
+        }
+        return  true
+      }
+    },
+    proxyval:{
+        type:String,
+        default:'',
     }
   },
+  created(){
+       console.log(this.proxyval);
+  },
   mounted() {
+
+     
     var oUl = document.getElementById("test");
     oUl.addEventListener(
       "click",
